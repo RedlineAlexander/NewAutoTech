@@ -24,6 +24,27 @@ namespace NewAutoTech.Data
             modelBuilder.Entity<AutosAndOwners>().HasOne(x => x.Autos).WithMany(m => m.AutosOwners).HasForeignKey(x => x.Autoid);
 
             modelBuilder.Entity<AutosAndOwners>().HasOne(x => x.Owners).WithMany(m => m.OwnersAutos).HasForeignKey(x => x.Ownerid);
+
+            modelBuilder.Entity<Autos>().HasData(
+             new Autos
+             {
+                AutoID = 1,
+                 AutoName = "Mazda",
+                 AutoColor = "Red",
+                 YearFromPipeline = new DateTime(2013, 7, 10, 23, 49, 0)
+
+             }
+             );
+            modelBuilder.Entity<Owners>().HasData(
+             new Owners
+             {
+                OwnerID = 1,
+                 LastName = "Oleks",
+                 FirstName = "Tyxy",
+                 FatherName = "Oleksiovic",
+                 BirthDate = new DateTime(2002, 7, 10, 23, 45, 0)
+             }
+             );
         }
 
 
