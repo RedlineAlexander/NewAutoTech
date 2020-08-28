@@ -26,6 +26,21 @@ namespace NewAutoTech.Controllers
             }
             return ownerss;
         }
+        //[HttpPost]
+        public Task<ActionResult<Autos>> GetOwnersByAutos()
+        {
 
+
+            var jcoa = from o in _context.Owners
+                       join a in _context.Autos on o.OwnerID equals a.AutoID
+                       where o.FirstName == "Oleks"
+                       orderby a.AutoID
+                       select a.AutoID;
+
+            return jcao.ToList();
+
+            // var joinautossowners = await _context.Autos.GroupJoin(autos => autos.OwnerID, owners => owners.AutoID, (autos, owners) => autos);
+            //  return joinautossowners;
+        }
     }
 }
